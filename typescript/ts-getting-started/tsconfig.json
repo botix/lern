@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "noUnusedLocals": true,
+    "outFile": "ouptup.js"
+  },
+  "files": [
+    "app.ts"
+  ]
+}
