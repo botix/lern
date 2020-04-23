@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.base",
+  "compilerOptions": {
+    "removeComments": true
+  },
+  "include": [
+    "./**/*" 
+    /*
+      Two asterisk signs: search recursively through subdirectories.
+      Include every type of file you can compile(*)
+    */
+  ]
+}
