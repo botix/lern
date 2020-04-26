@@ -1,4 +1,8 @@
-function GetAllBooks(){
+import { Category } from "./enum";
+import { Book, DamageLogger, Author, Librarian } from "./interfaces";
+import { UniversityLibrarian } from "./classes";
+
+function GetAllBooks(): Book[]{
   let books = [
     { id: 1, title: "Ulysses", author:"James Joyce", available: true, category: Category.Fiction },
     { id: 2, title: "A farewell to arms", author:"Ernest Hemingway", available: false, category: Category.Fiction },
@@ -46,7 +50,7 @@ function logBookTitles(titles: string[]): void{
   };
 };
 
-function getBookByID(id: number){
+function getBookByID(id: number): Book{
   const allBooks = GetAllBooks();
   return allBooks.filter(book => book.id === id)[0];
 };
@@ -108,6 +112,10 @@ function GetBookTitles(bookProperty: any): string[]{
   return foundTitles;
 }
 
+function PrintBook(book: Book): void{
+  console.log(`${book.title} by ${book.author}`);
+}
+
 
 
 /* ***************************************** */
@@ -123,3 +131,26 @@ logBookTitles(poetryBooks);
 
 let myCheckedOutBooks = checkOutBooks("Feanor", 1,3,4);
 console.log(myCheckedOutBooks)
+
+let myBook: Book = {
+  id: 5,
+  title:"Pride and Prejudice",
+  author: "Jane Austen",
+  available: true,
+  category: Category.Fiction,
+  pages: 250,
+  markDamaged: (reason: string) => console.log(`Damaged: ${reason}`)
+}
+
+PrintBook(myBook);
+if(myBook.markDamaged){ 
+  myBook.markDamaged("Missing cover");
+};
+
+let logDamage: DamageLogger;
+logDamage = (damage: string) => console.log(`Damage reported: ${damage}`);
+logDamage("Coffe stains");
+
+let favoriteLibrarian = new UniversityLibrarian();
+favoriteLibrarian.name = "Lynda";
+favoriteLibrarian.assistCustomer("Belinda");
