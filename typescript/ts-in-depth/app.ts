@@ -1,15 +1,15 @@
 function GetAllBooks(){
   let books = [
-    { title: "Ulysses", author:"James Joyce", available: true, category: Category.Fiction },
-    { title: "A farewell to arms", author:"Ernest Hemingway", available: false, category: Category.Fiction },
-    { title: "I Know Why the Caged Bird Sings", author:"Maya Angelou", available: true, category: Category.Poetry },
-    { title: "Moby Dick", author: "Herman Melville", available: true, category: Category.Fiction }
+    { id: 1, title: "Ulysses", author:"James Joyce", available: true, category: Category.Fiction },
+    { id: 2, title: "A farewell to arms", author:"Ernest Hemingway", available: false, category: Category.Fiction },
+    { id: 3, title: "I Know Why the Caged Bird Sings", author:"Maya Angelou", available: true, category: Category.Poetry },
+    { id: 4, title: "Moby Dick", author: "Herman Melville", available: true, category: Category.Fiction }
   ];
 
   return books
 };
 
-function LogFirstAvailableBook(books: any): void{
+function LogFirstAvailableBook(books= GetAllBooks()): void{
   let numberOfBooks: number = books.length
   let firstAvailable: string = "";
 
@@ -27,7 +27,7 @@ function LogFirstAvailableBook(books: any): void{
 enum Category { Biography, Poetry, Fiction, History, Children }
 
 
-function GetBookTitlesByCategory(categoryFilter: Category): Array<string>{
+function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string>{
   console.log(`Getting books in category ${Category[categoryFilter]}`);
   
   const allBooks = GetAllBooks();
@@ -48,5 +48,80 @@ function logBookTitles(titles: string[]): void{
   };
 };
 
+function getBookByID(id: number){
+  const allBooks = GetAllBooks();
+  return allBooks.filter(book => book.id === id)[0];
+};
+
+function createCustomerID(name: string, id: number): string{
+  return name + id;
+};
+
+function createCustomer(name: string, age?: number, city?: string): void{
+  console.log(`Creating customer: ${name}`);
+
+  if(age){
+    console.log(`Age: ${age}`);
+  };
+
+  if(city){
+    console.log(`City: ${city}`);
+  };
+};
+
+function checkOutBooks(customer: string, ...bookIDs: number[]): string[]{
+  console.log(`Checking out books for ${customer}`);
+
+  let booksCheckedOut: string[] = [];
+
+  for(let id of bookIDs){
+    let book = getBookByID(id)
+    if(book.available){
+      booksCheckedOut.push(book.title);
+    };
+  }
+  return booksCheckedOut;
+};
+
+//Overloading
+
+function GetBookTitles(author: string): string[];
+function GetBookTitles(available: boolean): string[];
+
+function GetBookTitles(bookProperty: any): string[]{
+  const allBooks = GetAllBooks();
+  const foundTitles: string[] = [];
+
+  if(typeof bookProperty == "string"){
+    for(let book of allBooks){
+      if(book.title === bookProperty){
+        foundTitles.push(book.title);
+      };
+    };
+  }
+  else if(typeof bookProperty == "boolean"){
+    for(let book of allBooks){
+      if(book.available === bookProperty){
+        foundTitles.push(book.title);
+      };
+    };
+  };
+
+  return foundTitles;
+}
+
+
+
+/* ***************************************** */
+let IdGenerator: (chars: string, nums: number) => string;
+IdGenerator = (name: string, id: number) => { return id + name}
+ 
+
+let myID: string = IdGenerator("Daniel", 10);
+console.log(myID)
+
 const poetryBooks = GetBookTitlesByCategory(Category.Poetry);
 logBookTitles(poetryBooks);
+
+let myCheckedOutBooks = checkOutBooks("Feanor", 1,3,4);
+console.log(myCheckedOutBooks)
