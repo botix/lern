@@ -24,8 +24,6 @@ function LogFirstAvailableBook(books= GetAllBooks()): void{
   console.log(`First Available: ${firstAvailable}`);
 }
 
-enum Category { Biography, Poetry, Fiction, History, Children }
-
 
 function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string>{
   console.log(`Getting books in category ${Category[categoryFilter]}`);
