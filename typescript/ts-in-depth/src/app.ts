@@ -1,6 +1,6 @@
 import { Category } from "./enum";
 import { Book, DamageLogger, Author, Librarian } from "./interfaces";
-import { UniversityLibrarian } from "./classes";
+import { UniversityLibrarian, ReferenceItem, Encyclopedia } from "./classes";
 
 function GetAllBooks(): Book[]{
   let books = [
@@ -154,3 +154,24 @@ logDamage("Coffe stains");
 let favoriteLibrarian = new UniversityLibrarian();
 favoriteLibrarian.name = "Lynda";
 favoriteLibrarian.assistCustomer("Belinda");
+
+// **  not usable anymore since the ReferenceItem class is now an abstract one **
+// let ref = new ReferenceItem("Strawberies, cheeries and an angel kissing spring", 2008);
+// ref.printItem();
+// ref.publisher = "Random Data Publisher";
+// console.log(ref.publisher);
+
+let refBook: ReferenceItem = new Encyclopedia("Animals of the World", 2004, 4);
+refBook.printItem();
+refBook.printCitation();
+
+//class expression
+let Newspaper = class extends ReferenceItem {
+  printCitation(): void{
+    console.log(`Newspaper: ${this.title}`);
+  };
+};
+
+let myPaper = new Newspaper("The Gazette", 2020);
+myPaper.printCitation();
+

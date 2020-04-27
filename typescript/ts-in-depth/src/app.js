@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var enum_1 = require("./enum");
 var classes_1 = require("./classes");
@@ -147,3 +160,25 @@ logDamage("Coffe stains");
 var favoriteLibrarian = new classes_1.UniversityLibrarian();
 favoriteLibrarian.name = "Lynda";
 favoriteLibrarian.assistCustomer("Belinda");
+// **  not usable anymore since the ReferenceItem class is now an abstract one **
+// let ref = new ReferenceItem("Strawberies, cheeries and an angel kissing spring", 2008);
+// ref.printItem();
+// ref.publisher = "Random Data Publisher";
+// console.log(ref.publisher);
+var refBook = new classes_1.Encyclopedia("Animals of the World", 2004, 4);
+refBook.printItem();
+refBook.printCitation();
+//class expression
+var Newspaper = /** @class */ (function (_super) {
+    __extends(class_1, _super);
+    function class_1() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    class_1.prototype.printCitation = function () {
+        console.log("Newspaper: " + this.title);
+    };
+    ;
+    return class_1;
+}(classes_1.ReferenceItem));
+var myPaper = new Newspaper("The Gazette", 2020);
+myPaper.printCitation();
