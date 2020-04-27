@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var enum_1 = require("./enum");
 var classes_1 = require("./classes");
+var utilityFunctions_1 = require("../lib/utilityFunctions");
 function GetAllBooks() {
     var books = [
         { id: 1, title: "Ulysses", author: "James Joyce", available: true, category: enum_1.Category.Fiction },
@@ -182,3 +183,20 @@ var Newspaper = /** @class */ (function (_super) {
 }(classes_1.ReferenceItem));
 var myPaper = new Newspaper("The Gazette", 2020);
 myPaper.printCitation();
+//generics
+var inventory = [
+    { id: 10, title: "The C programming language", author: "K & R", available: true, category: enum_1.Category.Software },
+    { id: 11, title: "Code Complete", author: "Steve McConnell", available: true, category: enum_1.Category.Software },
+    { id: 12, title: "8-bit Graphics with Cobol", author: "A.B.", available: true, category: enum_1.Category.Software },
+    { id: 13, title: "Cool autoexec.bat Scripts!", author: "C.D.", available: true, category: enum_1.Category.Software }
+];
+var purgedBooks = utilityFunctions_1.Purge(inventory);
+purgedBooks.map(function (book) { return console.table(book); });
+var purgedNums = utilityFunctions_1.Purge([1, 2, 3, 4]);
+purgedNums.map(function (num) { return console.table(num); });
+var bookShelf = new classes_1.Shelf();
+inventory.map(function (book) { return bookShelf.add(book); });
+var firstBook = bookShelf.getFirst();
+console.log(firstBook);
+var softwareBook = bookShelf.find("Code Complete");
+console.log(softwareBook);

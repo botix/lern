@@ -1,6 +1,7 @@
 import { Category } from "./enum";
 import { Book, DamageLogger, Author, Librarian } from "./interfaces";
-import { UniversityLibrarian, ReferenceItem, Encyclopedia } from "./classes";
+import { UniversityLibrarian, ReferenceItem, Encyclopedia, Shelf } from "./classes";
+import { calculateLateFee as CalcFee, MaxBooksAllowed, Purge } from "../lib/utilityFunctions";
 
 function GetAllBooks(): Book[]{
   let books = [
@@ -175,3 +176,25 @@ let Newspaper = class extends ReferenceItem {
 let myPaper = new Newspaper("The Gazette", 2020);
 myPaper.printCitation();
 
+//generics
+let inventory: Array<Book> = [
+  {id: 10, title: "The C programming language", author: "K & R", available: true, category: Category.Software},
+  {id: 11, title: "Code Complete", author: "Steve McConnell", available: true, category: Category.Software},
+  {id: 12, title: "8-bit Graphics with Cobol", author: "A.B.", available: true, category: Category.Software},
+  {id: 13, title: "Cool autoexec.bat Scripts!", author: "C.D.", available: true, category: Category.Software}
+];
+
+let purgedBooks: Array<Book> = Purge<Book>(inventory);
+purgedBooks.map(book => console.table(book));
+
+let purgedNums: Array<number> = Purge<number>([1, 2, 3, 4]);
+purgedNums.map(num => console.table(num))
+
+let bookShelf: Shelf<Book> = new Shelf<Book>();
+inventory.map(book => bookShelf.add(book));
+
+let firstBook: Book = bookShelf.getFirst()
+console.log(firstBook)
+
+let softwareBook = bookShelf.find("Code Complete");
+console.log(softwareBook)

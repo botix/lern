@@ -1,4 +1,4 @@
-import { Book, DamageLogger, Author, Librarian } from "./interfaces";
+import { Book, DamageLogger, Author, Librarian, ShelfItem } from "./interfaces";
 
 class UniversityLibrarian implements Librarian {
   name: string;
@@ -53,4 +53,21 @@ class Encyclopedia extends ReferenceItem{
   }
 };
 
-export { UniversityLibrarian, ReferenceItem, Encyclopedia };
+class Shelf<T extends ShelfItem>{
+  private _items: Array<T> = new Array<T>();
+
+  add(item: T): void {
+    this._items.push(item);
+  };
+  getFirst(): T{
+    return this._items[0];
+  };
+  find(title: string): T{
+    return this._items.filter(item => item.title === title)[0];
+  };
+  printTitles(): void{
+    this._items.map(item => console.log(item.title));
+  };
+};
+
+export { UniversityLibrarian, ReferenceItem, Encyclopedia, Shelf };
