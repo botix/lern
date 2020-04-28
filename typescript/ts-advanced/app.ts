@@ -1,96 +1,98 @@
 import { Category } from './src/enums';
 import { Book, Logger, Author, Librarian, Magazine } from './src/interfaces';
-import { UniversityLibrarian, ReferenceItem, Employee, Researcher } from './src/classes';
+import { UniversityLibrarian, PublicLibrarian, ReferenceItem, Employee, Researcher } from './src/classes';
 import * as util from './lib/utilityFunctions';
 
-function PrintBookInfo({title: booktitle, author: bookauthor}: Book): void {
-    console.log(`${booktitle} was authored by ${bookauthor}`);
-}
+class LibraryBook {
+    Checkout(): this {
+        //do checkout stuff
+        console.log("Checking out a book");
+        
+        return this;
+    };
+    
+    Checkin(): this {
+        if(this instanceof ChildrenBook){
+            console.log("Checking in a children book");
+        };
 
-let [book1, book2] = util.GetAllBooks();
-
-function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
-    PrintBookInfo(book1);
-    PrintBookInfo(book2);
-    console.log(others);
-}
-
-// LogFavoriteBooks(util.GetAllBooks());
-
-// let { title: booktitle, author: bookauthor } = book1;
-// console.log(booktitle);
-// console.log(bookauthor);
-
-// PrintBookInfo(book1);
-
-let schoolBooks: Book[] = [
-    { id: 10, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', available: true, category: Category.Fiction },
-    { id: 11, title: 'Crime and Punishment', author: 'Fyodor Dostoevsky', available: true, category: Category.Fiction },
-    { id: 12, title: 'Clear Light of Day', author: 'Anita Desai', available: true, category: Category.Fiction }
-];
-
-let booksRead: Book[] = util.GetAllBooks();
-booksRead.push(...schoolBooks);
-// console.log(booksRead);
-
-let poets: string[] = ['Shelley', 'Collins', 'Hughes'];
-let authors: string[] = ['Tolstoy', 'Fitzgerald', ...poets];
-// console.log(authors);
-
-// let catalogLocation: [string, Book] = ['A 123.456', book1];
-// catalogLocation[2] = 'some string';
-
-interface KeyValuePair<K, V> extends Array<K | V> {
-    0: K;
-    1: V;
-}
-
-let catalogLocation: KeyValuePair<string, Book> = ['A 123.456', book1];
-catalogLocation[2] = 'some string';
-
-
-let allBooks: Book[] = util.GetAllBooks();
-let allMagazines: Magazine[] = util.GetAllMagazines();
-
-let readingMaterial: PrintMaterial = allBooks[0];
-
-function PrintTitle(item: PrintMaterial): void {
-    console.log(item.title);
-}
-
-// PrintTitle(allBooks[0]);
-// PrintTitle(allMagazines[0]);
-
-let serialNovel: Serial = {
-    id: 100,
-    title: 'The Gradual Tale',
-    author: 'Occasional Pen',
-    available: true,
-    category: Category.Fiction,
-    publisher: 'Serial Press'
+        if( this instanceof ElectronicBook ) {
+            console.log("Checking in an electronic book");
+        };
+        
+        return this;
+    };
 };
 
-function applyMixins(derivedCtor: any, baseCtors: any[]) {
-    baseCtors.forEach(baseCtor => {
-        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-            derivedCtor.prototype[name] = baseCtor.prototype[name];
-        });
-    });
-}
+class ChildrenBook extends LibraryBook {
+    Clean(): this {
+        //clean the crayon marks
+        console.log("Cleaning the book");
 
-applyMixins(UniversityLibrarian, [Employee, Researcher]);
+        return this;
+    };
+};
 
-let newLibrarian = new UniversityLibrarian();
-// newLibrarian.doResearch('Economics');
+class ElectronicBook extends LibraryBook {
+    RemoveFromCustomerDevice(): this {
+        console.log("Removing book from device");
+        return this;
+    };
+};
+
+let kidBook = new ChildrenBook();
+
+kidBook
+    .Checkin()
+    .Clean()
+    .Checkout();
+
+let eBook = new ElectronicBook();
+
+eBook
+    .Checkin()
+    .RemoveFromCustomerDevice()
+    .Checkout();
+
+// Type Guards
+
+// typeof
+function logVisitor(param: number | string) {
+    if(typeof param === "string"){
+        console.log(`${param} new visitors arrived.`);
+    } else {
+        console.log(`${param} visited.`);
+    };
+};
+
+logVisitor(5);
+logVisitor("John Doe");
 
 
-//let frequency: 'monthly' | 'annually' = 'annually';
+//instanceof
+let lib: Librarian = new PublicLibrarian();
 
-type Frequency = 'monthly' | 'annually';
+if(lib instanceof UniversityLibrarian){
+    lib.assistFaculty();
+};
 
-function GetMagazineByFrequency(preferredFrequency: Frequency) {
-    // do something here
-}
+if(lib instanceof PublicLibrarian){
+    lib.teachComunity();
+};
 
-type PrintMaterial = Book | Magazine;
-type Serial = Book & Magazine;
+
+//custom type guard
+
+function isBook(text: Book | Magazine): text is Book {
+    return (<Book>text).author !== undefined;
+};
+
+console.log(isBook(util.GetAllBooks()[0]));
+
+let readingMaterial: Book | Magazine = util.GetAllMagazines()[0];
+
+if(isBook(readingMaterial)){
+    console.log(`The books author is ${readingMaterial.author}`);
+} else {
+    console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+};

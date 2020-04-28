@@ -27,6 +27,10 @@ class UniversityLibrarian implements Interfaces.Librarian, Employee, Researcher 
     
     assistCustomer(custName: string) {
         console.log(this.name + ' is assisting ' + custName);
+    };
+
+    assistFaculty(){
+        console.log("Assisting faculty");
     }
 
 	// implementation of the following to be provided by the mixing function
@@ -35,6 +39,20 @@ class UniversityLibrarian implements Interfaces.Librarian, Employee, Researcher 
     logTitle: () => void;
     doResearch: (topic: string) => void;    
 }
+
+class PublicLibrarian implements Interfaces.Librarian {
+    name: string;
+    email: string;
+    department: string;
+
+    assistCustomer(custName: string){
+        console.log("Assisting customer");
+    };
+
+    teachComunity(){
+        console.log("Teaching community");
+    }
+};
 
 abstract class ReferenceItem {
     
@@ -61,4 +79,4 @@ abstract class ReferenceItem {
     abstract printCitation(): void;
 }
 
-export { UniversityLibrarian, ReferenceItem, Employee, Researcher };
+export { UniversityLibrarian, ReferenceItem, Employee, Researcher, PublicLibrarian };

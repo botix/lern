@@ -1,6 +1,6 @@
 
-import { Category } from '../enums';
-import { Book, Magazine } from '../interfaces';
+import { Category } from '../src/enums';
+import { Book, Magazine } from '../src/interfaces';
 
 export function CalculateLateFee(daysLate: number): number {
     return daysLate * .25;
