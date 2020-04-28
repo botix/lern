@@ -148,4 +148,4 @@ const mySymbol = Symbol("first_symbol");
 let anotherSymbol = Symbol("first_symbol");
 
 console.log(mySymbol === anotherSymbol); // false
-console.log(typeof mySymbol); //symbol - it's a primitive
+console.log(typeof mySymbol); //symbol - it's a primitivey`
