@@ -67,7 +67,7 @@ for(let i=0; i < 10000; i++){
 };
 
 const afterMemory = process.memoryUsage().heapUsed;
-console.log(`Used memory ${(afterMemory - initialMemory)/1e6} MB`)
+console.log(`Used memory ${(afterMemory - initialMemory)/1e6} MB`);
 
 //10000 Objects used 2.83 MB of memory
 
@@ -108,32 +108,3 @@ function FlyWeightFactory() {
     getCount
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
