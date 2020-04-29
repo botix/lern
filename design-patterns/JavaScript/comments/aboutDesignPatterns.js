@@ -15,7 +15,8 @@ const typesOfPatterns = `
     - Factory
     - Singleton
   
-  Structural - deal with the makeup of the object themselves
+  Structural - deal with the makeup of the object themselves, either extending
+  or simplifying functionality.
     - Decorator
     - Facade
     - Flyweight
