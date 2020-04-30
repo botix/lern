@@ -8,11 +8,13 @@ const opts = {
 
 mongoose.connect(`mongodb://localhost/${db}`, opts);
 
-mongoose.connection
-  .once("open", () => console.log("Connected to test database"))
-  .on("error", err => {
-    console.warn("Warning: ", err);
-  });
+before((done) => {
+  mongoose.connection
+    .once("open", () => done())
+    .on("error", err => {
+      console.warn("Warning: ", err);
+    });
+});
 
 beforeEach((done)=> {
   mongoose.connection.collections.users.drop(() => {
