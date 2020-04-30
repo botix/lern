@@ -1,0 +1,17 @@
+{
+  "name": "theCompleteDeveloperGuideToMongoDB",
+  "version": "1.0.0",
+  "description": "> This is a course that provides insight on how to use MongoDB for   - Storing Data   - Writing efficient querries   - Designing effective NoSQL schemas with both data nesting and lookups   - Leveraging it's most popular interface Mongoose, and it's functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^7.1.2",
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.3"
+  }
+}
