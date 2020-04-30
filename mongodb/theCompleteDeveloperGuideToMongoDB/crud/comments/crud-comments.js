@@ -5,4 +5,7 @@ const mongooseEventHandlers = `Once and on are event handlers on connection, and
 other methods available on mongoose. They are event listeners, listening for events`;
 
 const mongooseConnectionString = `Accepts the path to the database in the format 
-"mongodb://ip:port/databasename", aditional parameter is the options object.`
+"mongodb://ip:port/databasename", aditional parameter is the options object.`;
+
+const globalString = String || `String is a reference to the base string object in JS. It's a
+global variable.`;
