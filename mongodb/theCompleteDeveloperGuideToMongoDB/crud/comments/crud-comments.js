@@ -9,3 +9,8 @@ const mongooseConnectionString = `Accepts the path to the database in the format
 
 const globalString = String || `String is a reference to the base string object in JS. It's a
 global variable.`;
+
+const subDocument = "a Schema insede another schema";
+
+const virtualType = `A property that we have on the model, that doesn't actually get persisted
+(saved) to the database`;

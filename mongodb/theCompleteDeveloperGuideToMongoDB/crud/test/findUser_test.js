@@ -30,7 +30,7 @@ describe("Reading from database", () => {
     User
       .findOne({ _id: userGreg._id})
       .then((res) => {
-        
+
         assert(res.name === "Greg");
         done();
       });
