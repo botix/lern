@@ -23,3 +23,8 @@ use the property name on the models as keys`;
 
 const associationLoading = `Be careful when loading associations, because if the number of
 associations is large enough, it might freeze the db while the query executes`;
+
+const middleware = `Middleware are functions that execute before or after a defined db operation.
+They have 4 events which can be listened to (init, validate, save, remove). A function can be
+defined to run each time one of these events fires. It's async in nature, so calling next() is
+required to indicate that the function has finished executing`;
