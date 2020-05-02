@@ -4,7 +4,7 @@
   "description": "> This is a course that provides insight on how to use MongoDB for   - Storing Data   - Writing efficient querries   - Designing effective NoSQL schemas with both data nesting and lookups   - Leveraging it's most popular interface Mongoose, and it's functionality",
   "main": "index.js",
   "scripts": {
-    "test": "mocha crud/test --recursive --exit"
+    "test": "mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
