@@ -28,5 +28,7 @@ export default ({ postId }) => {
 
 const commentStyle = {
   "textAlign": "left",
-  "marginLeft": "30%"
+  "marginLeft": "30%",
+  "marginBottom": ".5rem", 
+  "opacity": "0.8",
 };
