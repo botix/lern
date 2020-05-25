@@ -30,10 +30,13 @@ import avatar from "../images/beardedguy.jpg";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     background: "#222",
     height: "6.5vh",
     [theme.breakpoints.down("md")]:{
-      height: "10vh"
+      minHeight: "10vh"
     }
   },
   hamburgerMenu:{
@@ -47,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   menuSliderContainer:{
     width: 250,
     background: "#511",
-    height: "100%"
+    height: "100%",
   },
   avatar:{
     display: "block",
@@ -110,7 +113,7 @@ const Navbar = () => {
 
   return (
     <>
-    <Box component="nav">
+    <Box component="nav" style={{overflow:"hidden"}}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <IconButton onClick={toggleSidebarState}>
