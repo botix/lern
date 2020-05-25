@@ -66,34 +66,53 @@ const data = [
         `During January and some of February I built a CLI to gather and process data for a
         number of Bitcoin exchanges. I used an SQL database in the early stages of the project,
         but later switched to MongoDB. Learning more about NodeJS got me working with the file
-        system and cron jobs. From here I also started improving my Linux skills. A couple of
-        CLI helper functions can be found in the repo below`,
+        system and cron jobs. From here I also started improving my Linux skills and spent time setting up
+        a VPS. A couple of CLI helper functions can be found in the repo below`,
         "Github",
         "https://github.com/botix/lern/tree/master/fs/BitMexDailyDL"
       ],
       [
         "February",
-        "JavaScript under the hood",
-        `I wanted to build a solid foundation in Javascript, and this course provided
-        immense value at the very beggining`
+        "Operating Systems",
+        `Working with Linux and NodeJS began to shape a much more clear picture of the inner workings of the computer,
+        so time was dedicated to learning about computer architecture - from the logical and mathematical foundations 
+        set by Gödel and Turing, through assembler and compilers, to high level programming languages such as JS. I 
+        studied operating systems, their architecture based on memory, file, device, process and network managers,
+        kernel and system calls. For the first time I could clearly visualise how the browser and server communicate
+        both when run localy, and over the internet. This was a major headache when I was starting out, always wondering
+        what actually happens when client and server communicate. Started work on a comprehensive Linux course`,
+        "Udemy Course",
+        "https://www.udemy.com/course/complete-linux-training-course-to-get-your-dream-it-job/"
       ],
       [
         "March",
-        "JavaScript under the hood",
-        `I wanted to build a solid foundation in Javascript, and this course provided
-        immense value at the very beggining`
+        "MongoDB and Testing libraries",
+        `Main focus of this month was MongoDB. Refreshed my knowledge of CRUD operations, and got familiar with Jest,
+         Mocha and Pupeteer. Encountered some advanced concepts like monkey patching a third party library. At the start 
+         of the month when my mouse died, I decided not to get a new one, forcing myself to use the console for every single
+         task. It was challenging at start, but I became comfortable using only keyboard`,
+        "Github",
+        "https://github.com/botix/lern/tree/master/mongodb/theCompleteDeveloperGuideToMongoDB"
       ],
       [
         "April",
-        "JavaScript under the hood",
-        `I wanted to build a solid foundation in Javascript, and this course provided
-        immense value at the very beggining`
+        "Pluralsight free month",
+        `Due to the coronavirus, pluralsight offered free access to all courses for the month of April. I took a few courses
+        with main focus being TypeScript. I believe it will become an important part of the JS ecosystem and wanted to get 
+        some exposure.`,
+        "Github",
+        "https://github.com/botix/lern/tree/master/typescript"
       ],
       [
         "May",
-        "JavaScript under the hood",
-        `I wanted to build a solid foundation in Javascript, and this course provided
-        immense value at the very beggining`
+        "Design Patterns and Microservices, MaterialUI",
+        `Finished the course on the most common design patterns used in JavaScript, started in April, and began work on a massive
+        microservices architecture course from Udemy. This is an ongoing process, and will probably take a month or two as a side
+        project. I feel that my understanding of the backend is sufficient to divert some attention to frontend, so I began working
+        with MaterialUI which I find a most pleasant expirience so far. I also bought a new mouse, working with devtools is a bit tricky only using the keyboard.
+        Deno v.1.0 was released recently, wishing to try it soon.`,
+        "Gitub Design Patterns",
+        "https://github.com/botix/lern/tree/master/design-patterns/JavaScript"
       ]
     ] 
 ];
