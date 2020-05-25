@@ -61,10 +61,15 @@ const data = [
     ], 
     [ "2020",
       [
+        "January",
         "NodeJS/Postgres",
-        "Building an exchange monitoring CLI",
         `During January and some of February I built a CLI to gather and process data for a
-        number of Bitcoin exchanges. I used a SQL database on the project`
+        number of Bitcoin exchanges. I used an SQL database in the early stages of the project,
+        but later switched to MongoDB. Learning more about NodeJS got me working with the file
+        system and cron jobs. From here I also started improving my Linux skills. A couple of
+        CLI helper functions can be found in the repo below`,
+        "Github",
+        "https://github.com/botix/lern/tree/master/fs/BitMexDailyDL"
       ],
       [
         "February",

@@ -78,6 +78,9 @@ const useStyles = makeStyles(theme => ({
       "&:nth-of-type(2n):before":{
         display:"none"
       }
+    },
+    [theme.breakpoints.down("md")]:{
+      margin: "0 auto"
     }
   },
   heading: {

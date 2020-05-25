@@ -16,7 +16,9 @@ import  {
 } from "@material-ui/core";
 
 import { 
-  ArrowBack, 
+  ArrowBack,
+  Menu,
+  MenuOpen,
   AssignmentInd,
   Home,
   Apps,
@@ -28,10 +30,16 @@ import avatar from "../images/beardedguy.jpg";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    background: "#222"
+    background: "#222",
+    height: "6.5vh",
+    [theme.breakpoints.down("md")]:{
+      height: "10vh"
+    }
   },
-  arrowBack:{
-    color: "tomato"
+  hamburgerMenu:{
+    color: "tomato",
+    minHeight: "4vh",
+    minWidth: "4vh"
   }, 
   titleColor:{
     color:"tan"
@@ -106,11 +114,11 @@ const Navbar = () => {
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <IconButton onClick={toggleSidebarState}>
-            <ArrowBack className={classes.arrowBack}/>
+          {sidebarOpen ? 
+            <MenuOpen className={classes.hamburgerMenu}/> :
+            <Menu className={classes.hamburgerMenu} />
+          }
           </IconButton>
-          <Typography variant="h5" className={classes.titleColor}>
-            Portfolio
-          </Typography>
           <MobileRightMenuSlider
             open={sidebarOpen}
             onClose={toggleSidebarState}
